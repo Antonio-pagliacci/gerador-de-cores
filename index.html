@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gerador de cores aleatorio</title>
+    <style>
+        body{               
+            height: 100%;
+            width: 100%;           
+            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+            transition: 0.5s;
+        }
+
+        .container{   
+            margin: 200px auto;        
+            border: 1px solid grey;
+            border-radius: 20px;
+            width: 180px;
+            display: grid;
+            padding: 10px 15px;
+            background-color: #fff;
+        }
+        button{
+            border-radius: 5px;
+            margin: 20px 0;
+            font-size: large;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="btn">Gerar nova Cor</button>
+        <p id="color-code"></p>
+    </div>
+
+    <script>
+        let button = document.getElementById('btn')
+        let displayCode = document.getElementById('color-code')
+        let color
+
+        let randomColor = () => {
+            color = '#'
+            let hexaDecimal = '0123456789ABCDEF'
+            for (let i = 0; i < 6; i++){
+                color = color + hexaDecimal[Math.floor(Math.random() * 16)]
+            }
+            return color;
+            
+        }
+        button.addEventListener('click', () => {
+            document.body.style.backgroundColor = randomColor();           
+            displayCode.innerHTML = color;
+        });
+        
+    </script>
+    
+</body>
+</html>
